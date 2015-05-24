@@ -16,6 +16,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class LoginActivity extends AppCompatActivity {
 
+  public static final String NO_OF_ATTEMPTS = "vj.com.androidmvpsample.login.noOfAttempts";
   private EditText usernameView;
   private EditText passwordView;
   private int noOfAttempts;
@@ -26,6 +27,18 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
     usernameView = (EditText) findViewById(R.id.username);
     passwordView = (EditText) findViewById(R.id.password);
+  }
+
+  @Override
+  protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+    noOfAttempts = savedInstanceState.getInt(NO_OF_ATTEMPTS);
+  }
+
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    outState.putInt(NO_OF_ATTEMPTS, noOfAttempts);
+    super.onSaveInstanceState(outState);
   }
 
   public void onLoginClicked(View view) {
