@@ -1,6 +1,7 @@
 package vj.com.androidmvpsample.login;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   @Override
-  protected void onRestoreInstanceState(Bundle savedInstanceState) {
+  protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
     super.onRestoreInstanceState(savedInstanceState);
     noOfAttempts = savedInstanceState.getInt(NO_OF_ATTEMPTS);
   }
