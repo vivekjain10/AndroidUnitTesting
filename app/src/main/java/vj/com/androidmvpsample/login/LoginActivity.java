@@ -44,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
 
   public void onLoginClicked(View view) {
     if (noOfAttempts == 3) {
-      Toast.makeText(this, getString(R.string.max_attempts_message), LENGTH_LONG).show();
+      Toast.makeText(this, getString(R.string.max_attempts_message),
+          LENGTH_LONG).show();
       return;
     }
     String username = usernameView.getText().toString();
@@ -62,7 +63,8 @@ public class LoginActivity extends AppCompatActivity {
       new ActivityUtil(this).startMainActivity();
     } else {
       noOfAttempts++;
-      Toast.makeText(this, getString(R.string.login_failed, (3 - noOfAttempts)), LENGTH_SHORT).show();
+      Toast.makeText(this, getString(R.string.login_failed, (3 - noOfAttempts)),
+          LENGTH_SHORT).show();
     }
   }
 }
