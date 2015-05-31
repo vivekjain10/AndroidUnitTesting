@@ -13,9 +13,10 @@ import vj.com.androidmvpsample.R;
 import static android.widget.Toast.LENGTH_SHORT;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView {
   private EditText usernameView;
   private EditText passwordView;
+  private LoginPresenter presenter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
     usernameView = (EditText) findViewById(R.id.username);
     passwordView = (EditText) findViewById(R.id.password);
+    presenter = new LoginPresenter(this, new LoginService());
   }
 
   @Override
@@ -36,21 +38,36 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   public void onLoginClicked(View view) {
-    String username = usernameView.getText().toString();
-    String password = passwordView.getText().toString();
-    if (username.isEmpty()) {
-      usernameView.setError(getString(R.string.username_error));
-      return;
-    }
-    if (password.isEmpty()) {
-      passwordView.setError(getString(R.string.password_error));
-      return;
-    }
-    boolean loggedIn = new LoginService().login(username, password);
-    if (loggedIn) {
-      new ActivityUtil(this).startMainActivity();
-    } else {
-      Toast.makeText(this, getString(R.string.login_failed), LENGTH_SHORT).show();
-    }
+    presenter.onLoginClicked();
+  }
+
+  @Override
+  public String getUsername() {
+    return usernameView.getText().toString();
+  }
+
+  @Override
+  public void showUsernameError(int resId) {
+    usernameView.setError(getString(resId));
+  }
+
+  @Override
+  public String getPassword() {
+    return passwordView.getText().toString();
+  }
+
+  @Override
+  public void showPasswordError(int resId) {
+    passwordView.setError(getString(resId));
+  }
+
+  @Override
+  public void startMainActivity() {
+    new ActivityUtil(this).startMainActivity();
+  }
+
+  @Override
+  public void showLoginError(int resId) {
+    Toast.makeText(this, getString(resId), LENGTH_SHORT).show();
   }
 }
