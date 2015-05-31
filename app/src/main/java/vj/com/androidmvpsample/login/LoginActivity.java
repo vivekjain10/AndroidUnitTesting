@@ -3,7 +3,6 @@ package vj.com.androidmvpsample.login;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
   public void onLoginClicked(View view) {
     String username = usernameView.getText().toString();
     String password = passwordView.getText().toString();
-    if (TextUtils.isEmpty(username)) {
+    if (username.isEmpty()) {
       usernameView.setError(getString(R.string.username_error));
       return;
     }
-    if (TextUtils.isEmpty(password)) {
+    if (password.isEmpty()) {
       passwordView.setError(getString(R.string.password_error));
       return;
     }
