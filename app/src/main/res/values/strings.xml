@@ -6,10 +6,9 @@
   <string name="username">Username</string>
   <string name="password">Password</string>
   <string name="login">Login</string>
-  <string name="login_failed">Login failed. %1$d attempt(s) left.</string>
+  <string name="login_failed">Login failed.</string>
   <string name="username_error">Enter username</string>
   <string name="password_error">Enter password</string>
   <string name="success_message">You\'ve Successfully Logged In!!</string>
   <string name="main">Main</string>
-  <string name="max_attempts_message">Sorry! You\'ve exceeded the maximum number of login attempts</string>
 </resources>
